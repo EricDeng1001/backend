@@ -7,3 +7,5 @@ Content-Type: application/json
   "enabled": true,
   "authorities": ["http://localhost/authorities/user"]
 }
+
+###
