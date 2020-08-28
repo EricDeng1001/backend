@@ -67,10 +67,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.headers()
             .frameOptions()
             .sameOrigin();
-
+        httpSecurity.cors().configurationSource(corsConfigurationSource());
     }
 
-    @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Collections.singletonList("*"));
