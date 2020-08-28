@@ -13,7 +13,7 @@ public class SpringDataRestCustomization extends RepositoryRestConfigurerAdapter
         config.getCorsRegistry().addMapping("/**")
             .allowedOrigins("*")
             .allowedMethods("PUT", "DELETE", "POST", "GET")
-            .allowCredentials(false).maxAge(3600);
+            .allowCredentials(true).maxAge(3600);
     }
 
 }
