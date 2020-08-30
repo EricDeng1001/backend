@@ -1,11 +1,13 @@
-POST http://localhost/users
+POST http://localhost:8091/api/users
 Content-Type: application/json
 
 {
   "username": "test",
   "password": "test",
   "enabled": true,
-  "authorities": ["http://localhost/authorities/user"]
+  "authorities": [
+    "http://localhost:8091/api/authorities/user"
+  ]
 }
 
 ###

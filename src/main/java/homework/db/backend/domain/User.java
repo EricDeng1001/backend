@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import homework.db.backend.config.BCryptPasswordDeserializer;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,11 +14,13 @@ public class User {
     @Id
     private String username;
 
-
     @JsonDeserialize(using = BCryptPasswordDeserializer.class)
     private String password;
 
     private Boolean enabled = true;
+
+    @OneToMany(mappedBy = "publisher", cascade = {CascadeType.REMOVE})
+    private List<Post> posts;
 
     @ManyToMany
     private List<Authority> authorities;

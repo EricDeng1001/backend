@@ -1,4 +1,4 @@
-GET http://localhost:8081/posts
+GET http://localhost:8091/api/posts
 Accept: application/json
 
 ###

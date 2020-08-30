@@ -1,6 +1,5 @@
 package homework.db.backend.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -15,13 +14,16 @@ public class Post {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne(cascade = {CascadeType.MERGE})
+    private Topic topic;
+
     private String title;
 
     private String content;
 
     private LocalDateTime dateTime = LocalDateTime.now();
 
-    @OneToOne
+    @ManyToOne
     private User publisher;
 
     private AtomicLong viewCount = new AtomicLong(0);
@@ -29,7 +31,16 @@ public class Post {
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE}, mappedBy = "post")
     private List<Comment> comments;
 
-    private Integer commentCount = 0;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
+    private List<Vote> votes;
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
+    }
 
     public LocalDateTime getDateTime() {
         return dateTime;
@@ -39,6 +50,14 @@ public class Post {
         this.dateTime = dateTime;
     }
 
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topics) {
+        this.topic = topics;
+    }
+
     @JsonIgnore
     public List<Comment> getComments() {
         return comments;
@@ -46,16 +65,10 @@ public class Post {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
-        this.commentCount = comments.size();
     }
 
     public Integer getCommentCount() {
-        commentCount = comments.size();
-        return commentCount;
-    }
-
-    public void setCommentCount(Integer commentCount) {
-        this.commentCount = commentCount;
+        return comments.size();
     }
 
     public String getTitle() {
@@ -96,6 +109,15 @@ public class Post {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public long getVotesCount() {
+        return votes.size();
+    }
+
+    public long getRank() {
+        return viewCount.get() / 2 + getCommentCount() * 2 + comments.stream().map(Comment::getVoteCount)
+            .reduce(Long::sum).orElse(0L) + getVotesCount() * 2;
     }
 
 }

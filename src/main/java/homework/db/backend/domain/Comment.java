@@ -1,10 +1,7 @@
 package homework.db.backend.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.springframework.data.rest.core.annotation.RestResource;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Comment {
@@ -15,8 +12,10 @@ public class Comment {
 
     private String content;
 
-    @RestResource(path = "post", rel = "post")
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
+    private List<Vote> votes;
+
+    @ManyToOne
     private Post post;
 
     public String getContent() {
@@ -25,6 +24,10 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public long getVoteCount() {
+        return votes.size();
     }
 
     public Post getPost() {

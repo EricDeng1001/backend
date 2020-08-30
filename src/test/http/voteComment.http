@@ -1,0 +1,9 @@
+POST http://localhost:8091/api/votes
+Content-Type: application/json
+
+{
+  "comment": "http://localhost:8091/api/comments/4",
+  "user": "http://localhost:8091/api/users/admin"
+}
+
+###

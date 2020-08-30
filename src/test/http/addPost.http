@@ -1,0 +1,10 @@
+POST http://localhost:8091/api/posts
+Content-Type: application/json
+
+{
+  "title": "test",
+  "content": "test",
+  "publisher": "http://localhost:8091/api/users/admin",
+  "topic": "http://localhost:8091/api/topics/topic"
+}
+
