@@ -1,6 +1,7 @@
 package homework.db.backend.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,7 +14,7 @@ public class Comment {
     private String content;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
-    private List<Vote> votes;
+    private List<Vote> votes = new ArrayList<>();
 
     @ManyToOne
     private Post post;

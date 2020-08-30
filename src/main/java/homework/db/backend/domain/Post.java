@@ -1,9 +1,11 @@
 package homework.db.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -19,6 +21,7 @@ public class Post {
 
     private String title;
 
+    @Column(length = 4000)
     private String content;
 
     private LocalDateTime dateTime = LocalDateTime.now();
@@ -29,10 +32,10 @@ public class Post {
     private AtomicLong viewCount = new AtomicLong(0);
 
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE}, mappedBy = "post")
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "post")
-    private List<Vote> votes;
+    private List<Vote> votes = new ArrayList<>();
 
     public List<Vote> getVotes() {
         return votes;

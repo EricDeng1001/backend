@@ -40,7 +40,7 @@ public class DatabaseLoader implements CommandLineRunner {
         authorityRepository.save(Authority.ADMIN);
         userRepository.save(user);
         final Topic s = new Topic();
-        s.setTitle("topic");
+        s.setTitle("求职");
         s.setOwner(user);
         List<Post> posts = new ArrayList<>();
         topicRepository.save(s);
@@ -57,6 +57,10 @@ public class DatabaseLoader implements CommandLineRunner {
             posts.add(post);
         }
         s.setPosts(posts);
+        topicRepository.save(s);
+        s.setTitle("校园生活");
+        topicRepository.save(s);
+        s.setTitle("情感天地");
         topicRepository.save(s);
     }
 

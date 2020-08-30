@@ -1,6 +1,7 @@
 package homework.db.backend.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,7 +11,7 @@ public class Topic {
     private String title;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "topic")
-    private List<Post> posts;
+    private List<Post> posts = new ArrayList<>();
 
     @OneToOne
     private User owner;
