@@ -21,7 +21,7 @@ public class Post {
 
     private String title;
 
-    @Column(length = 4000)
+    @Column(columnDefinition = "TEXT")
     private String content;
 
     private LocalDateTime dateTime = LocalDateTime.now();
