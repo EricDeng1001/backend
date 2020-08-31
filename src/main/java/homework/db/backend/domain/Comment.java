@@ -1,6 +1,7 @@
 package homework.db.backend.domain;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -11,6 +12,8 @@ public class Comment {
     private Long id;
 
     private String content;
+
+    private LocalDate dateTime = LocalDate.now();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
     private List<Vote> votes;
@@ -24,6 +27,14 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public LocalDate getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDate dateTime) {
+        this.dateTime = dateTime;
     }
 
     public long getVoteCount() {
