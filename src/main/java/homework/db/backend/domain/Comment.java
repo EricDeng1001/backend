@@ -20,7 +20,18 @@ public class Comment {
     private List<Vote> votes = new ArrayList<>();
 
     @ManyToOne
+    private User commenter;
+
+    @ManyToOne
     private Post post;
+
+    public User getCommenter() {
+        return commenter;
+    }
+
+    public void setCommenter(User commenter) {
+        this.commenter = commenter;
+    }
 
     public String getContent() {
         return content;
