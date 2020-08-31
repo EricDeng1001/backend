@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import homework.db.backend.config.BCryptPasswordDeserializer;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,10 +21,10 @@ public class User {
     private Boolean enabled = true;
 
     @OneToMany(mappedBy = "publisher", cascade = {CascadeType.REMOVE})
-    private List<Post> posts;
+    private List<Post> posts = new ArrayList<>();
 
     @ManyToMany
-    private List<Authority> authorities;
+    private List<Authority> authorities = new ArrayList<>();
 
     public User(String username, String password, List<Authority> authorities) {
         this.username = username;

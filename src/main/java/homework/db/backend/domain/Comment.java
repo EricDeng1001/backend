@@ -2,6 +2,7 @@ package homework.db.backend.domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class Comment {
     private LocalDate dateTime = LocalDate.now();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "comment")
-    private List<Vote> votes;
+    private List<Vote> votes = new ArrayList<>();
 
     @ManyToOne
     private Post post;
