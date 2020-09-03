@@ -31,6 +31,8 @@ public class Post {
 
     private AtomicLong viewCount = new AtomicLong(0);
 
+    private long rank;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE}, mappedBy = "post")
     private List<Comment> comments = new ArrayList<>();
 
@@ -119,7 +121,7 @@ public class Post {
     }
 
     public long getRank() {
-        return viewCount.get() / 2 + getCommentCount() * 2 + comments.stream().map(Comment::getVoteCount)
+        return rank = viewCount.get() / 2 + getCommentCount() * 2 + comments.stream().map(Comment::getVoteCount)
             .reduce(Long::sum).orElse(0L) + getVotesCount() * 2;
     }
 

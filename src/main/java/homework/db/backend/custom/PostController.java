@@ -24,6 +24,7 @@ public class PostController {
         final Optional<Post> byId = postRepository.findById(id);
         if (byId.isPresent()) {
             byId.get().getViewCount().incrementAndGet();
+            byId.get().getRank();
             postRepository.save(byId.get());
             return ResponseEntity.ok(byId.get());
         }
