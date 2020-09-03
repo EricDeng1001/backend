@@ -10,9 +10,6 @@ public class Topic {
     @Id
     private String title;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "topic")
-    private List<Post> posts = new ArrayList<>();
-
     @OneToOne
     private User owner;
 
@@ -22,10 +19,6 @@ public class Topic {
 
     public void setTitle(String topic) {
         this.title = topic;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
     }
 
     public void setOwner(User owner) {

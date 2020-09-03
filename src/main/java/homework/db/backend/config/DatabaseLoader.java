@@ -56,7 +56,6 @@ public class DatabaseLoader implements CommandLineRunner {
             postRepository.save(post);
             posts.add(post);
         }
-        s.setPosts(posts);
         topicRepository.save(s);
         s.setTitle("校园生活");
         topicRepository.save(s);
