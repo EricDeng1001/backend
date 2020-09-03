@@ -47,7 +47,7 @@ public class DatabaseLoader implements CommandLineRunner {
         for (int i = 0; i < 3; i++) {
             final Post post = new Post();
             post.setTitle("一篇好帖子");
-            post.setContent("北邮是个傻逼学校");
+            post.setContent("北邮是个好学校");
             post.setPublisher(user);
             post.setTopic(s);
             Vote vote = new Vote();
