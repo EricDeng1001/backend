@@ -26,16 +26,8 @@ public class Vote {
         this.id = id;
     }
 
-    public Comment getComment() {
-        return comment;
-    }
-
     public void setComment(Comment comment) {
         this.comment = comment;
-    }
-
-    public Post getPost() {
-        return post;
     }
 
     public void setPost(Post post) {

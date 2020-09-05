@@ -53,6 +53,10 @@ public class Comment {
         return votes.size();
     }
 
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
     public Post getPost() {
         return post;
     }
