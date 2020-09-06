@@ -21,6 +21,16 @@ public class Post {
 
     private String title;
 
+    public String getMarkdown() {
+        return markdown;
+    }
+
+    public void setMarkdown(String markdown) {
+        this.markdown = markdown;
+    }
+
+    private String markdown;
+
     @Column(columnDefinition = "TEXT")
     private String content;
 
@@ -122,7 +132,7 @@ public class Post {
 
     public long getRank() {
         return rank = viewCount.get() / 2 + getCommentCount() * 2 + comments.stream().map(Comment::getVoteCount)
-            .reduce(Long::sum).orElse(0L) + getVotesCount() * 2;
+                .reduce(Long::sum).orElse(0L) + getVotesCount() * 2;
     }
 
 }
