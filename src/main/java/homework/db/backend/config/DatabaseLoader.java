@@ -39,15 +39,16 @@ public class DatabaseLoader implements CommandLineRunner {
         authorityRepository.save(Authority.USER);
         authorityRepository.save(Authority.ADMIN);
         userRepository.save(user);
-        final Topic s = new Topic();
+        Topic s = new Topic();
         s.setTitle("求职");
         s.setOwner(user);
         List<Post> posts = new ArrayList<>();
         topicRepository.save(s);
         for (int i = 0; i < 3; i++) {
             final Post post = new Post();
-            post.setTitle("一篇好帖子");
-            post.setContent("北邮是个好学校");
+            post.setTitle("一篇好帖子" + i);
+            post.setMarkdown("北邮是个好学校" + i);
+            post.setContent("北邮是个好学校" + i);
             post.setPublisher(user);
             post.setTopic(s);
             Vote vote = new Vote();
@@ -57,8 +58,10 @@ public class DatabaseLoader implements CommandLineRunner {
             posts.add(post);
         }
         topicRepository.save(s);
+        s = new Topic();
         s.setTitle("校园生活");
         topicRepository.save(s);
+        s = new Topic();
         s.setTitle("情感天地");
         topicRepository.save(s);
     }
