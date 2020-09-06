@@ -1,6 +1,9 @@
 package homework.db.backend.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Vote {
@@ -9,7 +12,7 @@ public class Vote {
     @GeneratedValue
     private long id;
 
-    @OneToOne
+    @ManyToOne
     private User user;
 
     @ManyToOne

@@ -41,7 +41,6 @@ public class DatabaseLoader implements CommandLineRunner {
         userRepository.save(user);
         final Topic s = new Topic();
         s.setTitle("求职");
-        s.setOwner(user);
         List<Post> posts = new ArrayList<>();
         topicRepository.save(s);
         for (int i = 0; i < 3; i++) {

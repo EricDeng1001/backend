@@ -4,9 +4,12 @@ logging:
       springframework:
         security: info
 spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
   datasource:
-    url: jdbc:h2:mem:homework-db
-  #    url: jdbc:h2:file:~/homework-db
+    #    url: jdbc:h2:mem:homework-db
+    url: jdbc:h2:file:~/homework-db
   data:
     rest:
       base-path: /api
