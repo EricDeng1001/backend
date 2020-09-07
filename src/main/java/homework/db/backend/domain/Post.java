@@ -1,7 +1,6 @@
 package homework.db.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -29,6 +28,7 @@ public class Post {
         this.markdown = markdown;
     }
 
+    @Column(columnDefinition = "TEXT")
     private String markdown;
 
     @Column(columnDefinition = "TEXT")
